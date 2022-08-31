@@ -11,8 +11,13 @@ try:
     root.iconbitmap('pytext.ico')
 except:
     pass
-root.geometry('400x400')
-root.maxsize(height=400, width=400)
+try:
+    wsize = open('devmode/dimensions.txt')
+    root.geometry(wsize)
+    root.maxsize(height=wsize, width=wsize)
+except FileNotFoundError:
+    root.geometry('400x400')
+    root.maxsize(height=400, width=400)
 
 def save():
     global count
